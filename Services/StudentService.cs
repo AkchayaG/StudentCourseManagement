@@ -1,3 +1,5 @@
+
+using System.Text.RegularExpressions;
 using StudentCourseManagement.Models;
 using StudentCourseManagement.Repository;
 
@@ -19,14 +21,22 @@ public class StudentService
 
         student.Name = student.Name.Trim();
 
-
         if (string.IsNullOrWhiteSpace(student.Email))
             throw new ArgumentException("Student email is required.");
 
         student.Email = student.Email.Trim();
 
+        if (!Regex.IsMatch(
+                student.Email,
+                @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
+        {
+            throw new ArgumentException(
+                "Please enter a valid email address.");
+        }
+
         if (student.Age < 17 || student.Age > 60)
-            throw new ArgumentException("Age must be between 17 and 60.");
+            throw new ArgumentException(
+                "Age must be between 17 and 60.");
 
         await _repository.AddStudentAsync(student);
     }
@@ -39,7 +49,8 @@ public class StudentService
     public async Task<Student?> GetStudentByIdAsync(int id)
     {
         if (id <= 0)
-            throw new ArgumentException("Student ID must be greater than zero.");
+            throw new ArgumentException(
+                "Student ID must be greater than zero.");
 
         return await _repository.GetStudentByIdAsync(id);
     }
