@@ -1,18 +1,37 @@
-Student Course Management System - PDF code in a ready VS Code project
+## Student Course Management System
 
-1. Install .NET 10 SDK and SQL Server Express / SQL Server.
-2. Open database.sql in SSMS and execute it.
-3. In Program.cs, edit the connection string if your SQL Server instance is not .\SQLEXPRESS.
-4. Open this folder in VS Code terminal.
-5. Run:
-   dotnet restore
-   dotnet build
-   dotnet run
+### Project Description
+This is a C# console application used to manage student and course details.
 
-Features:
-- Add student, view all students, search student by ID
-- Add course, view all courses, search course by ID
-- ADO.NET using Microsoft.Data.SqlClient
-- Service validation and repository database access
+### Technologies Used
+- C#
+- .NET 10
+- SQL Server
+- ADO.NET
+- Visual Studio Code
 
-This project follows the core sample code in the uploaded PDF. The optional enrollment transaction exercise is not included in the initial runnable menu.
+### Features
+- Add a new student
+- View all students
+- Search student by ID
+- Add a new course
+- View all courses
+- Search course by ID
+
+### Database
+The application uses SQL Server to store and retrieve student and course information.
+
+### How to Run
+1. Open the project in Visual Studio Code.
+2. Configure the SQL Server connection string.
+3. Execute the database.sql script.
+4. Run the application using the .NET CLI.
+## Project Update
+
+This project manages student and course information using C# and SQL Server.
+
+### Technologies
+- C#
+- .NET 10
+- SQL Server
+- ADO.NET
