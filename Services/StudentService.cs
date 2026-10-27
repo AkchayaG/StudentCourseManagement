@@ -17,8 +17,13 @@ public class StudentService
         if (string.IsNullOrWhiteSpace(student.Name))
             throw new ArgumentException("Student name is required.");
 
+        student.Name = student.Name.Trim();
+
+
         if (string.IsNullOrWhiteSpace(student.Email))
             throw new ArgumentException("Student email is required.");
+
+        student.Email = student.Email.Trim();
 
         if (student.Age < 17 || student.Age > 60)
             throw new ArgumentException("Age must be between 17 and 60.");
