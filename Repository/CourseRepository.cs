@@ -11,7 +11,7 @@ public class CourseRepository
     {
         _connectionString = connectionString;
     }
-
+  
     public async Task AddCourseAsync(Course course)
     {
         const string query = """
@@ -55,6 +55,8 @@ public class CourseRepository
 
         return courses;
     }
+    if (id <= 0)
+    throw new ArgumentException("Course ID must be greater than zero.");
 
     public async Task<Course?> GetCourseByIdAsync(int id)
     {
