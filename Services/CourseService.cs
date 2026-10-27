@@ -11,7 +11,8 @@ public class CourseService
     {
         _repository = repository;
     }
-
+    if (string.IsNullOrWhiteSpace(course.CourseName))
+    throw new ArgumentException("Course name is required.");
     public async Task AddCourseAsync(Course course)
     {
         if (string.IsNullOrWhiteSpace(course.CourseName))
