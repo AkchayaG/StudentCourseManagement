@@ -55,6 +55,8 @@ public class StudentRepository
 
         return students;
     }
+    if (id <= 0)
+    throw new ArgumentException("Student ID must be greater than zero.");
 
     public async Task<Student?> GetStudentByIdAsync(int id)
     {
