@@ -33,7 +33,7 @@ public class CourseRepository
         const string query = """
             SELECT CourseId, CourseName, DurationMonths, Fee
             FROM Courses
-            ORDER BY CourseId
+            ORDER BY CourseName
             """;
 
         var courses = new List<Course>();
