@@ -1,3 +1,4 @@
+
 using StudentCourseManagement.Models;
 using StudentCourseManagement.Repository;
 
@@ -12,18 +13,18 @@ public class CourseService
         _repository = repository;
     }
 
-    if (string.IsNullOrWhiteSpace(course.CourseName))
-    throw new ArgumentException("Course name is required.");
-    if (string.IsNullOrWhiteSpace(course.CourseName))
-    throw new ArgumentException("Course name is required.");
-
     public async Task AddCourseAsync(Course course)
     {
+        if (course == null)
+            throw new ArgumentNullException(nameof(course));
+
         if (string.IsNullOrWhiteSpace(course.CourseName))
             throw new ArgumentException("Course name is required.");
 
+        course.CourseName = course.CourseName.Trim();
+
         if (course.DurationMonths <= 0)
-            throw new ArgumentException("Duration must be greater than zero.");
+            throw new ArgumentException("Course duration must be greater than zero.");
 
         if (course.Fee < 0)
             throw new ArgumentException("Course fee cannot be negative.");
@@ -31,9 +32,9 @@ public class CourseService
         await _repository.AddCourseAsync(course);
     }
 
-    public Task<List<Course>> GetAllCoursesAsync()
+    public async Task<List<Course>> GetAllCoursesAsync()
     {
-        return _repository.GetAllCoursesAsync();
+        return await _repository.GetAllCoursesAsync();
     }
 
     public async Task<Course?> GetCourseByIdAsync(int id)
